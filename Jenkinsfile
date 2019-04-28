@@ -9,7 +9,9 @@ node('linux'){
         sh "ant -f build.xml -v"
     }
     stage('Deploy'){
-        sh "aws s3api create-bucket --bucket my-bucket --region us-east-1"
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAI54NTZ55YRQZQV2A', credentialsId: 'admin', secretKeyVariable: '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']]) {
+            sh 'aws s3api create-bucket --bucket jenkinsbucket --region us-east-1' 
+        }
     }
     
 }
