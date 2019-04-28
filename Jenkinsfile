@@ -12,9 +12,9 @@ node('linux'){
         sh "aws s3 cp dist/rectangle-${BUILD_NUMBER}.jar s3://jenkins-bucket-mjd"
     }
     stage('Report'){
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIA5EATQOEHTAHGHCZS', credentialsId: 'AWS user for Jenkins', secretKeyVariable: '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']]) {
-            sh 'aws cloudformation describe-stack-resources --stack-name jenkins --region us-east-1' 
-        }	  
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS user for Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            sh "aws cloudformation describe- stack-resources --region us-east-1 --stack-name jenkins"
+        }
     }
     
 }
