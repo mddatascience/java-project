@@ -2,7 +2,7 @@ properties([pipelineTriggers([githubPush()])])
 node('linux'){
     stage('Build'){
         git 'https://github.com/mddatascience/java-project.git'
-        sh "ant"
+        sh "ant -f build.xml -v"
     }
     
     stage('Unit Tests'){
