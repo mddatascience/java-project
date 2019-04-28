@@ -8,5 +8,10 @@ node('linux'){
     stage('Build'){
         sh "ant -f build.xml -v"
     }
+    stage('Deploy'){
+        
+        sh "aws s3api create-bucket --bucket jenkinsbucket --region us-east-1"
+        sh "aws s3 cp dist/rectangle-${BUILD_NUMBER}.jar s3://jenkinsbucket"
+    }
     
 }
