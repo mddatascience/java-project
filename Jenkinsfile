@@ -9,7 +9,7 @@ node('linux'){
         sh "ant -f build.xml -v"
     }
     stage('Deploy'){
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAI54NTZ55YRQZQV2A', credentialsId: 'AWS user for Jenkins', secretKeyVariable: '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']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAI54NTZ55YRQZQV2A', secretKeyVariable: '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']]) {
             sh 'aws s3api create-bucket --bucket jenkinsbucket --region us-east-1' 
         }
     }
