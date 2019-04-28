@@ -8,5 +8,8 @@ node('linux'){
     stage('Build'){
         sh "ant -f build.xml -v"
     }
+    stage('Deploy'){
+        sh "aws s3api create-bucket --bucket my-bucket --region us-east-1"
+    }
     
 }
