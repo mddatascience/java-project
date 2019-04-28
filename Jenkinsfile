@@ -9,7 +9,7 @@ node('linux'){
         sh "ant -f build.xml -v"
     }
     stage('Deploy'){
-        sh "aws s3 create-bucket --bucket jenkinsbucket --region us-east-1"
+        sh "aws s3api create-bucket --bucket jenkinsbucket --region us-east-1"
     }
     
 }
