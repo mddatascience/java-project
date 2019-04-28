@@ -11,5 +11,8 @@ node('linux'){
     stage('Deploy'){
         sh "aws s3 cp dist/rectangle-${BUILD_NUMBER}.jar s3://jenkins-bucket-mjd"
     }
+    stage('Report'){
+        sh "aws cloudformation describe- stack-resources --region us-east-1 --stack-name jenkins"
+    }
     
 }
